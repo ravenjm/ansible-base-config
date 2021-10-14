@@ -1,0 +1,35 @@
+- name: Make sure we have a '{{ admin_group }}' group
+  group:
+    name: "{{ admin_group }}"
+    state: present
+
+- name: Allow '{{ admin_group }}' group to have passwordless sudo action
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%{{ admin_group }}'
+    line: '%{{ admin_group }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Add the groups
+  ansible.builtin.group:
+    name: "{{ item.login }}"
+    state: present
+  with_items: "{{ users }}"
+
+- name: Add the users 
+  ansible.builtin.user:
+    name: "{{ item.login }}"
+    shell: /bin/bash
+    groups: "{{ item.login }},{{ admin_group }}"
+    append: yes
+  with_items: "{{ users }}"
+
+- name: Set authorized keys for users
+  ansible.posix.authorized_key:
+    user: "{{ item.login }}"
+    state: present
+    key: "{{ lookup('file', '{{ item.public_key }}') }}"
+  with_items: "{{ users }}"
+  when: item.public_key is defined
+

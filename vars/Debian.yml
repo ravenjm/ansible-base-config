@@ -1,0 +1,5 @@
+---
+# vars file for base-role
+os_specific_pkgs:
+  - apache2
+admin_group: sudo

@@ -1,0 +1,4 @@
+---
+os_specific_pkgs:
+  - epel-release
+admin_group: wheel

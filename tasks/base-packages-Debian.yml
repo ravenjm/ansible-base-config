@@ -1,0 +1,15 @@
+---
+- name: Update apt cache
+  apt:
+    name: "{{ os_specific_pkgs }}"
+    update_cache: yes
+
+- name: Install OS specific packages
+  apt:
+    name: "{{ os_specific_pkgs }}"
+    state: present
+
+- name: Install common packages
+  ansible.builtin.package:
+    name: "{{ common_pkgs }}"
+    state: present

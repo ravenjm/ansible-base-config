@@ -1,0 +1,9 @@
+---
+- name: Include OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install base packages
+  include_tasks: "base-packages-{{ ansible_os_family }}.yml"
+
+- name: Add users
+  import_tasks: users.yml

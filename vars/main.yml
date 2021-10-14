@@ -1,0 +1,15 @@
+---
+# vars file for base-role
+common_pkgs:
+  - sudo
+  - mc
+  - telnet 
+  - net-tools 
+  - traceroute 
+  - tcpdump 
+  - ncdu 
+  - vim 
+  - bash-completion 
+  - chrony
+  - wget
+  - unzip

@@ -1,0 +1,10 @@
+---
+- name: Install OS specific packages
+  ansible.builtin.package:
+    name: "{{ os_specific_pkgs }}"
+    state: present
+
+- name: Install common packages
+  ansible.builtin.package:
+    name: "{{ common_pkgs }}"
+    state: present
