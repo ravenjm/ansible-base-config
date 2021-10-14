@@ -1,7 +1,7 @@
-Role Name
+Setup base settings on clean VM
 =========
 
-A brief description of the role goes here.
+This role configure base settings on clean provisoned VM, setup basic packages, add user and bind public key in case if it was defined
 
 Requirements
 ------------
