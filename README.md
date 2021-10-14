@@ -26,10 +26,10 @@ Including an example of how to use your role (for instance, with variables passe
 - hosts: all
   become: yes
   roles:
-     - role: 'base-role'
-       vars:
-         users:
-           - { login: "raven", public_key: '/path/to/public.key' }
+     - role: 'base-role'  
+       vars:  
+         users:  
+           - { login: "raven", public_key: '/path/to/public.key' }  
            - { login: "vasya" }
 
 
